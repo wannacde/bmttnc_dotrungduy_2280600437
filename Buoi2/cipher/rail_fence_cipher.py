@@ -16,19 +16,37 @@ class RailFenceCipher:
         return ''.join(''.join(row) for row in fence)
 
     def decrypt(self, text):
-        fence = [[] for _ in range(self.rails)]
+        # Create a fence to hold the characters
+        fence = [[''] * len(text) for _ in range(self.rails)]
         index = 0
         direction = 1
-        pattern = [index]
+        pattern = [0] * len(text)
 
-        for _ in text[1:]:
+        # Create the pattern for the zigzag
+        for i in range(len(text)):
+            pattern[i] = index
             index += direction
-            pattern.append(index)
             if index == 0 or index == self.rails - 1:
                 direction *= -1
 
-        sorted_indices = sorted(range(len(text)), key=lambda i: pattern[i])
-        for i, char in zip(sorted_indices, text):
-            fence[pattern[i]].append(char)
+        # Fill the fence with placeholders from the ciphertext
+        char_index = 0
+        for rail in range(self.rails):
+            for i in range(len(text)):
+                if pattern[i] == rail:
+                    fence[rail][i] = text[char_index]
+                    char_index += 1
 
-        return ''.join(''.join(row) for row in fence)
+        # Read the fence in zigzag order to reconstruct the plaintext
+        result = []
+        index = 0
+        direction = 1
+        for i in range(len(text)):
+            result.append(fence[index][i])
+            index += direction
+            if index == 0 or index == self.rails - 1:
+                direction *= -1
+
+        return ''.join(result)
+
+

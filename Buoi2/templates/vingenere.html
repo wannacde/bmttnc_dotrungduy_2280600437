@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+  <title>Vigenere Cipher</title>
+</head>
+<body>
+  <header>
+    <h1>Vigenere Cipher</h1>
+    <nav>
+      <ul>
+        <li><a href="{{ url_for('index') }}">Home</a></li>
+        <li><a href="{{ url_for('caesar') }}">Caesar Cipher</a></li>
+        <li><a href="{{ url_for('playfair') }}">Playfair Cipher</a></li>
+        <li><a href="{{ url_for('rail_fence') }}">Rail Fence Cipher</a></li>
+        <li><a href="{{ url_for('transposition') }}">Transposition Cipher</a></li>
+      </ul>
+    </nav>
+  </header>
+  <main>
+    <h2>Encrypt/Decrypt with Vigenere Cipher</h2>
+    <form id="vingenere-form">
+      <label for="vingenere-text">Text:</label>
+      <textarea id="vingenere-text" required></textarea>
+      <label for="vingenere-key">Key:</label>
+      <input type="text" id="vingenere-key" required>
+      <button type="submit">Encrypt</button>
+      <button type="button" id="vingenere-decrypt-button">Decrypt</button>
+    </form>
+    <div id="vingenere-result"></div>
+  </main>
+  <footer>
+    <p>&copy; 2023 Encryption Tool</p>
+  </footer>
+  <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>

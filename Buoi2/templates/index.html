@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+  <title>Encryption Home</title>
+  <meta name="description" content="Encryption Tool Home Page">
+  <meta name="keywords" content="Encryption, Ciphers, Caesar, Vigenere, Playfair, Rail Fence, Transposition">
+</head>
+<body>
+  <header>
+    <h1>Welcome to the Encryption Tool</h1>
+    <nav>
+      <ul>
+        <li><a href="{{ url_for('index') }}">Home</a></li>
+        <li><a href="{{ url_for('caesar') }}">Caesar Cipher</a></li>
+        <li><a href="{{ url_for('vingenere') }}">Vigenere Cipher</a></li>
+        <li><a href="{{ url_for('playfair') }}">Playfair Cipher</a></li>
+        <li><a href="{{ url_for('rail_fence') }}">Rail Fence Cipher</a></li>
+        <li><a href="{{ url_for('transposition') }}">Transposition Cipher</a></li>
+      </ul>
+    </nav>
+  </header>
+  <main>
+    <h2>Choose an Encryption Method</h2>
+    <p>Select a cipher from the navigation menu to get started.</p>
+  </main>
+  <footer>
+    <p>&copy; 2023 Encryption Tool</p>
+  </footer>
+</body>
+</html>
